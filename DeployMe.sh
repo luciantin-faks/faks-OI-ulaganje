@@ -14,6 +14,8 @@ cp ServeDeamon.sh /home/protected
 cp server.js /home/public
 cp app.py /home/public
 
+cd /home/protected
+chmod +x ServerDeamon.sh
 
 cd /home/public
 npm install express
