@@ -20,14 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7eb6e786-8bb5-4b54-8a36-43826f3c96ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/countries.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentInput.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentItem.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/components/ItemColumn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/components/ItemColumn.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/views/About.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentInput.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentInput.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +52,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609657680831</updated>
-      <workItem from="1609657681869" duration="2827000" />
+      <workItem from="1609657681869" duration="2859000" />
+      <workItem from="1609677417416" duration="92000" />
     </task>
     <servers />
   </component>
@@ -74,5 +70,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1060" y="475" key="FileChooserDialogImpl" timestamp="1609667023568">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1060" y="475" key="FileChooserDialogImpl/-2560.0.2560.1440/0.0.2560.1440@0.0.2560.1440" timestamp="1609667023568" />
   </component>
 </project>

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="LeftMenu">
       <h1>Menu</h1>
-      <InvestmentInput />
+      <InvestmentInput :propInputData="inputData" @calculate="onCalculate" />
     </div>
     <div class="RightCol">
       <ItemColumn v-for="(items,index) in ModelData" :items="items" :colID="index" :key="index" @itemChange="onitemChange" @deleteItem="onDeleteItem" @addItem="onAddItem" @copyItem="onItemCopy" />
@@ -20,10 +20,11 @@ export default {
   components: {InvestmentInput, ItemColumn, },
   data(){
     return{
+      connection: null,
       inputData:{
-        pocetniUlog:0,
-        diverzifikacija:0,
-        rizik:0,
+        initialInvestment:100,
+        diversification:'25%',
+        risk:'Low',
       },
       ModelData:[
         [
@@ -60,11 +61,40 @@ export default {
       console.log(this.ModelData)
       if(e.colID+1 >= this.ModelData.length ) this.ModelData.push([])
       this.ModelData[e.colID+1].push(Object.assign({},this.ModelData[e.colID][e.itemID]))
+    },
+    onCalculate(inputData){
+      this.inputData = Object.assign({},inputData)
+      console.log('Sending Data...');
+      this.connection.send(JSON.stringify({
+        ModelData:this.ModelData,
+        InputData:this.inputData
+      }))
     }
   },
+  created() {
+    console.log('Connecting to server...');
+    this.connection = new WebSocket("ws://oi.tin.blue/calculate/:9090");
+    this.connection.onmessage = function(event) {
+      console.log('New Message....')
+      console.log(event);
+    }
+    this.connection.onopen = function(event) {
+      console.log(event)
+      console.log("Successfully connected to the server...")
+    }
+  }
 }
 </script>
+<!--
 
+ let a = new WebSocket("ws://oi.tin.blue/calculate/:9090");
+a.onmessage = function(e){console.log(e)}
+ a.onopen = function(event) {
+console.log(event)
+console.log("Successfully connected to the server...")
+}
+
+-->
 <style lang="scss" scoped>
   .home{
     display: flex;
