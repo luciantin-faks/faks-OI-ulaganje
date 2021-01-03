@@ -16,22 +16,14 @@ app.listen(port, () => {
 
 wsServer.on('connection',socket =>{
     socket.on('message',message=>{
-
+        var largeDataSet = [];
         const python = spawn('python3', ['app.py']);
-        // collect data from script
         python.stdout.on('data', function (data) {
-            // console.log('Pipe data from python script ...',data);
             largeDataSet.push(data);
         });
-        // in close event we are sure that stream is from child process is closed
         python.on('close', (code) => {
-            // console.log(`child process close all stdio with code ${code}`);
-            // send data to browser
-            // console.log(largeDataSet)
-            // res.send(largeDataSet.join(""))
-            socket.send(` Roger That ${message} ${code}`)
+            socket.send(`${largeDataSet}`)
         });
-
     })
 })
 
