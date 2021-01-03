@@ -20,5 +20,6 @@ dos2unix ServeDeamon.sh
 
 cd /home/public
 npm install express
+npm install ws
 rm -rf OI-ulaganje
 
