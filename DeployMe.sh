@@ -7,7 +7,7 @@ git clone https://github.com/luciantin/OI-ulaganje
 cd /home/public/OI-ulaganje/ulaganje_web
 npm install
 npm run build
-cp dist /home/public
+mv dist /home/public
 
 cd /home/public/OI-ulaganje/server
 cp ServeDeamon.sh /home/protected
