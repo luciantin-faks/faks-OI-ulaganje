@@ -17,7 +17,7 @@ app.listen(port, () => {
 wsServer.on('connection',socket =>{
     socket.on('message',message=>{
         var largeDataSet = [];
-        const python = spawn('python3', ['app.py']);
+        const python = spawn('python3', ['app.py',message]);
         python.stdout.on('data', function (data) {
             largeDataSet.push(data);
         });

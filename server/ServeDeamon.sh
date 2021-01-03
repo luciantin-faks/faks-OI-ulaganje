@@ -17,4 +17,4 @@
 
 #sleep infinity
 cd /home/public
-node server.js &
+node server.js
