@@ -29,7 +29,7 @@ wsServer.on('connection',socket =>{
             // send data to browser
             // console.log(largeDataSet)
             // res.send(largeDataSet.join(""))
-            socket.send(` Roger That ${message}`)
+            socket.send(` Roger That ${message} ${code}`)
         });
 
     })
