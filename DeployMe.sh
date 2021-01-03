@@ -16,6 +16,7 @@ cp app.py /home/public
 
 cd /home/protected
 chmod +x ServeDeamon.sh
+dos2unix ServeDeamon.sh
 
 cd /home/public
 npm install express
