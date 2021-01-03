@@ -4,6 +4,7 @@
     <InputField class="InputField" type="Growth" :ID="itemID" :data="itemData.Growth" @dataChange="onInputDataChange" />
     <InputField class="InputField" type="MaxChange" :ID="itemID" :data="itemData.MaxChange" @dataChange="onInputDataChange" />
     <div @click="$emit('deleteItem',itemID)">delete</div>
+    <div @click="$emit('copyItem',itemID)">copy</div>
   </div>
 </template>
 
@@ -29,7 +30,7 @@ export default {
       })
     }
   },
-  emits:['itemChange','deleteItem']
+  emits:['itemChange','deleteItem','copyItem']
 }
 </script>
 
