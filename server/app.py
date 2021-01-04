@@ -3,9 +3,9 @@ from scipy.optimize import minimize
 import sys
 import json
 
-# jsan = sys.argv[1]
-
-jsan = "{\"ModelData\":[[{\"Name\":\"TestA\",\"ROI\":\"1\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0},{\"Name\":\"TestB\",\"ROI\":\"2\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0}],[{\"Name\":\"TestC\",\"ROI\":\"3\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0},{\"Name\":\"TestD\",\"ROI\":\"4\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0}],[{\"Name\":\"TestE\",\"ROI\":\"5\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0},{\"Name\":\"TestF\",\"ROI\":\"6\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0}]],\"InputData\":{\"initialInvestment\":100,\"diversification\":\"25%\",\"risk\":\"Low\"}}\n"
+jsan = sys.argv[1]
+#print(jsan)
+#jsan = "{\"ModelData\":[[{\"Name\":\"TestA\",\"ROI\":\"1\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0},{\"Name\":\"TestB\",\"ROI\":\"2\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0}],[{\"Name\":\"TestC\",\"ROI\":\"3\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0},{\"Name\":\"TestD\",\"ROI\":\"4\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0}],[{\"Name\":\"TestE\",\"ROI\":\"5\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0},{\"Name\":\"TestF\",\"ROI\":\"6\",\"Min\":\"0\",\"Max\":\"100\",\"Risk\":0}]],\"InputData\":{\"initialInvestment\":100,\"diversification\":\"25%\",\"risk\":\"Low\"}}\n"
 # print(json.loads(jsan))
 Data = json.loads(jsan)
 
@@ -118,15 +118,17 @@ for i in Data['ModelData']:
     prepared_model_data.append(PrepareData(i))
 
 
-user_pocetni_ulog = Data['InputData']['initialInvestment']
+user_pocetni_ulog = float(Data['InputData']['initialInvestment'])
 user_max_risk = 1
 
 for i in prepared_model_data:
     tmp = SolveCol(i,user_max_risk,user_pocetni_ulog)
-    ReturnData.append(tmp)
+    ReturnData.append(tmp.fun)
+#    ReturnData.append(tmp.x)
+#    ReturnData.append(tmp.success)
     user_pocetni_ulog = tmp.fun * -1
 
-print(ReturnData)
+print(json.dumps(ReturnData))
 
 
 

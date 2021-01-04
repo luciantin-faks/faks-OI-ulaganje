@@ -65,10 +65,12 @@ export default {
     onCalculate(inputData){
       this.inputData = Object.assign({},inputData)
       console.log('Sending Data...');
-      this.connection.send(JSON.stringify({
+      let data = JSON.stringify({
         ModelData:this.ModelData,
         InputData:this.inputData
-      }))
+      })
+      console.log(data)
+      this.connection.send(data)
     }
   },
   created() {
