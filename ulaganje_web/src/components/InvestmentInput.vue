@@ -1,7 +1,7 @@
 <template>
   <div class="InvestmentInput">
 
-    <InputField :ID="0" :type="`Initial Investment`"  :data="inputData.initialInvestment" @dataChange="onInitInvestmentChange" />
+    <InputField :ID="0" :type="`Initial Investment`"  :data="inputData.initialInvestment" @dataChange="onInitInvestmentChange" :text="{title:'Initial Investment',front:'',back:''}" />
 
     <p>Risk</p>
     <select name="Risk" v-model="inputData.risk">

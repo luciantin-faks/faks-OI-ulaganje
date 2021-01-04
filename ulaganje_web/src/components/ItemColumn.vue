@@ -2,7 +2,7 @@
   <div class="ItemCol">
     <h2>Year {{colID + 1}}</h2>
     <InvestmentItem v-for="(item,index) in items" :itemData="item" :itemID="index" :key="index" @itemChange="onitemChange" @deleteItem="onDeleteItem" @copyItem="onItemCopy" />
-    <div @click="$emit('addItem',colID)">Add Item</div>
+    <div class="AddItem" @click="$emit('addItem',colID)">Add Item</div>
   </div>
 </template>
 
@@ -37,16 +37,25 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .ItemCol{
     display: flex;
     flex-direction: column;
-    width: 20vw;
+    width: 10vw;
     height: 30vh;
     overflow-y: auto;
     align-content: center;
     margin: 20px;
+    padding: 5px 20px;
     background-color: beige;
+
+    .AddItem{
+      background-color: lightblue;
+      padding: 5px 0px;
+      user-select: none;
+      cursor: pointer;
+
+    }
 
   }
 

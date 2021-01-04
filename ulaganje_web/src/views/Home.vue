@@ -6,7 +6,7 @@
     </div>
     <div class="RightCol">
       <ItemColumn v-for="(items,index) in ModelData" :items="items" :colID="index" :key="index" @itemChange="onitemChange" @deleteItem="onDeleteItem" @addItem="onAddItem" @copyItem="onItemCopy" />
-      <p @click="onAddCol">Add Col</p>
+      <div class="AddCol" @click="onAddCol"><p>Add Col</p></div>
     </div>
   </div>
 </template>
@@ -28,16 +28,16 @@ export default {
       },
       ModelData:[
         [
-          {Name:'Testset',Growth:'1',MaxChange:'5'},
-          {Name:'Testset',Growth:'2',MaxChange:'5'},
+          {Name:'TestA',ROI:'1',Min:'0',Max:'100',Risk:0},
+          {Name:'TestB',ROI:'2',Min:'0',Max:'100',Risk:0},
         ],
         [
-          {Name:'Testset',Growth:'3',MaxChange:'5'},
-          {Name:'Testset',Growth:'4',MaxChange:'5'},
+          {Name:'TestC',ROI:'3',Min:'0',Max:'100',Risk:0},
+          {Name:'TestD',ROI:'4',Min:'0',Max:'100',Risk:0},
         ],
         [
-          {Name:'Testset',Growth:'5',MaxChange:'5'},
-          {Name:'Testset',Growth:'6',MaxChange:'5'},
+          {Name:'TestE',ROI:'5',Min:'0',Max:'100',Risk:0},
+          {Name:'TestF',ROI:'6',Min:'0',Max:'100',Risk:0},
         ]
       ]
     }
@@ -51,7 +51,7 @@ export default {
     },
     onAddItem(e){
       this.ModelData[e].push({
-        Name:'New',Growth:'0',MaxChange:'0'
+        Name:'New',ROI:'0',Min:'0',Max:'100',Risk:0
       })
     },
     onAddCol(){
@@ -98,14 +98,13 @@ console.log("Successfully connected to the server...")
 <style lang="scss" scoped>
   .home{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     .LeftMenu{
       display: flex;
       flex-direction: column;
       //width: 20vw;
-      flex-grow: 2;
-      min-width: 20vw;
+      flex-grow: 1;
     }
 
     .RightCol{
@@ -115,7 +114,17 @@ console.log("Successfully connected to the server...")
       //width: 80vw;
       flex-grow: 8;
       justify-content: left;
-      min-width: 80vw;
+    }
+
+    .AddCol{
+      width: 10vw;
+      height: 30vh;
+      overflow-y: auto;
+      align-content: center;
+      margin: 20px;
+      padding: 5px 20px;
+      background-color: dodgerblue;
+      align-self: center;
     }
 
   }

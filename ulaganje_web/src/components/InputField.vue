@@ -1,8 +1,8 @@
 <template>
   <div class="InputField">
-    <p>{{type}} : </p>
+    <p>{{text.title}} : </p>
     <div class="Data">
-      <p class="DataText" @click="onTextClick" v-if="!showInput">{{localData}}</p>
+      <p class="DataText" @click="onTextClick" v-if="!showInput">{{text.front}} {{localData}} {{text.back}}</p>
       <input  class="DataInput" ref="input"  :value="localData" v-else @focusout="onFocusOutOfTextInput">
     </div>
   </div>
@@ -14,7 +14,8 @@ name: "InputField",
   props:{
     ID:Number,
     type:String,
-    data:String
+    data:String,
+    text:Object
   },
   data(){
     return{
@@ -49,6 +50,7 @@ name: "InputField",
     flex-direction: row;
     justify-content: center;
     align-content: center;
+    align-items: center;
     //height: 1.1em;
     line-height: 0.1em;
     .Data{

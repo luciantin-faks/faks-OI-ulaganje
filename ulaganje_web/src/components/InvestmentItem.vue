@@ -1,10 +1,14 @@
 <template>
   <div class="InvestmentItem">
-    <InputField class="InputField" type="Name" :ID="itemID" :data="itemData.Name" @dataChange="onInputDataChange" />
-    <InputField class="InputField" type="Growth" :ID="itemID" :data="itemData.Growth" @dataChange="onInputDataChange" />
-    <InputField class="InputField" type="MaxChange" :ID="itemID" :data="itemData.MaxChange" @dataChange="onInputDataChange" />
-    <div @click="$emit('deleteItem',itemID)">delete</div>
-    <div @click="$emit('copyItem',itemID)">copy</div>
+    <InputField class="InputField" type="Name" :ID="itemID" :data="itemData.Name" @dataChange="onInputDataChange" :text="{title:'Name',front:'',back:''}" />
+    <InputField class="InputField" type="ROI" :ID="itemID" :data="itemData.ROI" @dataChange="onInputDataChange"   :text="{title:'ROI',front:'',back:'%'}"/>
+    <InputField class="InputField" type="Risk" :ID="itemID" :data="itemData.Risk" @dataChange="onInputDataChange"   :text="{title:'Risk',front:'',back:''}"/>
+    <InputField class="InputField" type="Min" :ID="itemID" :data="itemData.Min" @dataChange="onInputDataChange"   :text="{title:'Min',front:'',back:'%'}" />
+    <InputField class="InputField" type="Max" :ID="itemID" :data="itemData.Max" @dataChange="onInputDataChange"   :text="{title:'Max',front:'',back:'%'}" />
+    <div class="Buttons">
+      <div class="DeleteItem" @click="$emit('deleteItem',itemID)">delete</div>
+      <div class="CopyItem" @click="$emit('copyItem',itemID)">copy</div>
+    </div>
   </div>
 </template>
 
@@ -38,9 +42,39 @@ export default {
   .InvestmentItem{
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
+    background-color: darkcyan;
+    //justify-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
     .InputField{
       padding-left: 20px;
     }
+
+    .Buttons{
+      display: flex;
+      flex-direction: column;
+
+      .DeleteItem{
+        justify-self: center;
+        align-self: center;
+        background-color: indianred;
+        width: 100%;
+        margin-bottom: 5px;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      .CopyItem{
+        justify-self: center;
+        align-self: center;
+        background-color: dodgerblue;
+        width: 100%;
+        user-select: none;
+        cursor: pointer;
+      }
+    }
+
   }
 </style>
