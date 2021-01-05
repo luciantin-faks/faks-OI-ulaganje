@@ -123,9 +123,12 @@ user_max_risk = 1
 
 for i in prepared_model_data:
     tmp = SolveCol(i,user_max_risk,user_pocetni_ulog)
-    ReturnData.append(tmp.fun)
-#    ReturnData.append(tmp.x)
-#    ReturnData.append(tmp.success)
+    tmpData = []
+    rez = round( tmp.fun ,2)
+    val = []
+    for x in tmp.x:
+        val.append(round( x ,2))
+    ReturnData.append([rez,val])
     user_pocetni_ulog = tmp.fun * -1
 
 print(json.dumps(ReturnData))
