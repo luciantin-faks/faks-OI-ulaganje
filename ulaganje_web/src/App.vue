@@ -9,6 +9,8 @@ body{
   //box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: #80AFDA;
+
 }
 
 #app {

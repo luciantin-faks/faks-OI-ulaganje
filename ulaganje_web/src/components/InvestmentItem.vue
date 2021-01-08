@@ -43,10 +43,13 @@ export default {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
-    background-color: darkcyan;
     //justify-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
+
+    background: #FFFFFF;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
 
     .InputField{
       padding-left: 20px;
@@ -64,6 +67,7 @@ export default {
         margin-bottom: 5px;
         user-select: none;
         cursor: pointer;
+        border-radius: 8px;
       }
 
       .CopyItem{
@@ -73,6 +77,7 @@ export default {
         width: 100%;
         user-select: none;
         cursor: pointer;
+        border-radius: 8px;
       }
     }
 

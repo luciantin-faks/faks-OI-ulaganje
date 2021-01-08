@@ -28,10 +28,12 @@ name: "InputField",
       this.showInput = true;
     },
     onFocusOutOfTextInput(e){
+      let tmpVal = e.srcElement.value;
+      if(tmpVal == '') tmpVal = '0';
       this.$emit('dataChange',{
         type:this.type,
         ID:this.ID,
-        data:e.srcElement.value,
+        data:tmpVal,
       })
       this.showInput = false;
     }

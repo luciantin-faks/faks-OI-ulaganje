@@ -1,6 +1,10 @@
 <template>
   <div class="ItemCol">
-    <h2>Year {{colID + 1}}</h2>
+    <div class="header" >
+      <h4>X</h4>
+      <h2>Year {{colID + 1}}</h2>
+      <h3 @click="$emit('deletCol',colID)">X</h3>
+    </div>
     <InvestmentItem v-for="(item,index) in items" :itemData="item" :itemID="index" :key="index" @itemChange="onitemChange" @deleteItem="onDeleteItem" @copyItem="onItemCopy" />
     <div class="AddItem" @click="$emit('addItem',colID)">Add Item</div>
   </div>
@@ -33,7 +37,7 @@ export default {
       })
     }
   },
-  emits:['itemChange','deleteItem','addItem','copyItem']
+  emits:['itemChange','deleteItem','addItem','copyItem','deletCol']
 }
 </script>
 
@@ -48,13 +52,34 @@ export default {
     margin: 20px;
     padding: 5px 20px;
     background-color: beige;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
 
     .AddItem{
       background-color: lightblue;
       padding: 5px 0px;
       user-select: none;
       cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    }
 
+    .header{
+      display: flex;
+      flex-direction: row;
+      //justify-items: center;
+      align-items: center;
+      //align-content: space-evenly;
+      justify-content: space-between;
+      h3{
+        justify-self: right;
+        cursor: pointer;
+        color: indianred;
+      }
+      h4{
+        visibility: hidden;
+      }
     }
 
   }

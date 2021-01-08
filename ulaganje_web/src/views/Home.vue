@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <div class="LeftMenu">
+    <div class="TopMenu">
       <h1>Menu</h1>
       <InvestmentInput :propInputData="inputData" @calculate="onCalculate" />
     </div>
-    <div class="RightCol">
-      <ItemColumn v-for="(items,index) in ModelData" :items="items" :colID="index" :key="index" @itemChange="onitemChange" @deleteItem="onDeleteItem" @addItem="onAddItem" @copyItem="onItemCopy" />
+    <div class="BotItems">
+      <ItemColumn v-for="(items,index) in ModelData" :items="items" :colID="index" :key="index" @itemChange="onitemChange" @deleteItem="onDeleteItem" @addItem="onAddItem" @copyItem="onItemCopy" @deletCol="onDeleteCol" />
       <div class="AddCol" @click="onAddCol"><p>Add Col</p></div>
     </div>
   </div>
@@ -21,10 +21,11 @@ export default {
   data(){
     return{
       connection: null,
+      showResult:false,
       inputData:{
         initialInvestment:100,
         diversification:'25%',
-        risk:'Low',
+        risk:1,
       },
       ModelData:[
         [
@@ -32,8 +33,8 @@ export default {
           {Name:'TestB',ROI:'2',Min:'0',Max:'100',Risk:0},
         ],
         [
-          {Name:'TestC',ROI:'3',Min:'0',Max:'100',Risk:0},
-          {Name:'TestD',ROI:'4',Min:'0',Max:'100',Risk:0},
+          {Name:'TestC',ROI:'3',Min:'0',Max:'50',Risk:0},
+          {Name:'TestD',ROI:'4',Min:'0',Max:'50',Risk:0},
         ],
         [
           {Name:'TestE',ROI:'5',Min:'0',Max:'100',Risk:0},
@@ -57,6 +58,9 @@ export default {
     onAddCol(){
       this.ModelData.push([])
     },
+    onDeleteCol(colId){
+      this.ModelData.splice(colId,1);
+    },
     onItemCopy(e){
       console.log(this.ModelData)
       if(e.colID+1 >= this.ModelData.length ) this.ModelData.push([])
@@ -64,56 +68,56 @@ export default {
     },
     onCalculate(inputData){
       this.inputData = Object.assign({},inputData)
+
+      let tmpModelData = Array.from(this.ModelData)
+      for(let key in tmpModelData ) console.log(key)
+
       console.log('Sending Data...');
       let data = JSON.stringify({
         ModelData:this.ModelData,
         InputData:this.inputData
       })
-      console.log(data)
       this.connection.send(data)
+    },
+    HandleResult(res){
+      console.log(res)
     }
   },
   created() {
     console.log('Connecting to server...');
     this.connection = new WebSocket("ws://oi.tin.blue/calculate/:9090");
-    this.connection.onmessage = function(event) {
-      console.log('New Message....')
-      console.log(event);
-    }
+    this.connection.onmessage = this.HandleResult;
     this.connection.onopen = function(event) {
-      console.log(event)
+      // console.log(event)
       console.log("Successfully connected to the server...")
     }
-  }
+  },
 }
 </script>
-<!--
 
- let a = new WebSocket("ws://oi.tin.blue/calculate/:9090");
-a.onmessage = function(e){console.log(e)}
- a.onopen = function(event) {
-console.log(event)
-console.log("Successfully connected to the server...")
-}
 
--->
 <style lang="scss" scoped>
   .home{
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
 
-    .LeftMenu{
+    .TopMenu{
       display: flex;
       flex-direction: column;
-      //width: 20vw;
+      width: 20vw;
       flex-grow: 1;
+      align-items: center;
+      align-self: center;
+      background-color: #C1E0F5;
+      box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
     }
 
-    .RightCol{
+    .BotItems{
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      //width: 80vw;
       flex-grow: 8;
       justify-content: left;
     }
@@ -125,8 +129,12 @@ console.log("Successfully connected to the server...")
       align-content: center;
       margin: 20px;
       padding: 5px 20px;
-      background-color: dodgerblue;
+      //background-color: dodgerblue;
       align-self: center;
+      cursor: pointer;
+      background: lightgreen;
+      box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
     }
 
   }

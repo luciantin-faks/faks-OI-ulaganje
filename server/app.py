@@ -48,7 +48,7 @@ def SolveCol(Col,max_risk,pocetni_ulog):
     def objective(x):
         obj = 0
         for i in range(length):
-            obj = obj - ROI[i]*x[i]
+            obj = obj - (ROI[i]/100)*x[i]
         return obj
 
     def c_min_maker(target_index):
@@ -56,7 +56,7 @@ def SolveCol(Col,max_risk,pocetni_ulog):
             summ = 0
             for i in range(length):
                 summ = summ + x[i]
-            summ = x[target_index]/summ - Min[target_index]
+            summ = x[target_index]/summ - (Min[target_index]/100)
             return summ
         return c_min
 
@@ -65,7 +65,7 @@ def SolveCol(Col,max_risk,pocetni_ulog):
             summ = 0
             for i in range(length):
                 summ = summ + x[i]
-            summ = Max[target_index] - x[target_index]/summ
+            summ = (Max[target_index]/100) - x[target_index]/summ
             return summ
         return c_max
 
@@ -119,7 +119,7 @@ for i in Data['ModelData']:
 
 
 user_pocetni_ulog = float(Data['InputData']['initialInvestment'])
-user_max_risk = 1
+user_max_risk = float(Data['InputData']['risk'])
 
 for i in prepared_model_data:
     tmp = SolveCol(i,user_max_risk,user_pocetni_ulog)
@@ -129,7 +129,7 @@ for i in prepared_model_data:
     for x in tmp.x:
         val.append(round( x ,2))
     ReturnData.append([rez,val])
-    user_pocetni_ulog = tmp.fun * -1
+    user_pocetni_ulog = tmp.fun * -1 + user_pocetni_ulog
 
 print(json.dumps(ReturnData))
 
