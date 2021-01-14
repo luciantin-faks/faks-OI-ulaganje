@@ -20,10 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7eb6e786-8bb5-4b54-8a36-43826f3c96ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentInput.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentInput.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/components/InvestmentItem.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/components/ItemColumn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/components/ItemColumn.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ulaganje_web/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../ulaganje_web/src/views/Home.vue" afterDir="false" />
@@ -63,6 +59,7 @@
       <workItem from="1609657681869" duration="2859000" />
       <workItem from="1609677417416" duration="92000" />
       <workItem from="1610120234147" duration="781000" />
+      <workItem from="1610460776506" duration="629000" />
     </task>
     <servers />
   </component>

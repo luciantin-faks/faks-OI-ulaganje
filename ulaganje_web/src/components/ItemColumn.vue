@@ -1,12 +1,18 @@
 <template>
   <div class="ItemCol">
     <div class="header" >
-      <h4>X</h4>
-      <h2>Year {{colID + 1}}</h2>
-      <h3 @click="$emit('deletCol',colID)">X</h3>
+      <div class="firstRow">
+        <h3 @click="$emit('deletCol',colID)">X</h3>
+        <h2 class="title">Period {{colID + 1}}</h2>
+        <h4 class="deleteCol">X</h4>
+      </div>
+      <div class="secondRow">
+        <p v-if="colGain!=undefined">Gain : {{colGain.gain}} </p>
+        <p v-if="colGain!=undefined">Sum : {{colGain.sum}} </p>
+      </div>
     </div>
     <InvestmentItem v-for="(item,index) in items" :itemData="item" :itemID="index" :key="index" @itemChange="onitemChange" @deleteItem="onDeleteItem" @copyItem="onItemCopy" />
-    <div class="AddItem" @click="$emit('addItem',colID)">Add Item</div>
+    <div class="AddItem" @click="$emit('addItem',colID)"><h2>+</h2></div>
   </div>
 </template>
 
@@ -17,7 +23,8 @@ export default {
   components: {InvestmentItem},
   props:{
     items:Object,
-    colID:Number
+    colID:Number,
+    colGain:String,
   },
   methods:{
     onitemChange(e){
@@ -44,10 +51,11 @@ export default {
 <style scoped lang="scss">
   .ItemCol{
     display: flex;
-    flex-direction: column;
-    width: 10vw;
-    height: 30vh;
+    flex-direction: row;
+    //width: 10vw;
+    height: 10vh;
     overflow-y: auto;
+    overflow-x: hidden;
     align-content: center;
     margin: 20px;
     padding: 5px 20px;
@@ -58,27 +66,47 @@ export default {
 
     .AddItem{
       background-color: lightblue;
-      padding: 5px 0px;
+      padding: 0px 5px;
       user-select: none;
       cursor: pointer;
       border-radius: 10px;
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
 
     .header{
       display: flex;
-      flex-direction: row;
-      //justify-items: center;
-      align-items: center;
-      //align-content: space-evenly;
-      justify-content: space-between;
-      h3{
-        justify-self: right;
-        cursor: pointer;
-        color: indianred;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .firstRow{
+        display: flex;
+        flex-direction: row;
+        //justify-items: center;
+        align-items: center;
+        //align-content: space-evenly;
+        justify-content: space-between;
+        .title{
+          margin: 0px 10px;
+        }
+
+        h3{
+          justify-self: right;
+          cursor: pointer;
+          color: indianred;
+        }
+        h4{
+          visibility: hidden;
+        }
       }
-      h4{
-        visibility: hidden;
+      .secondRow{
+        display: flex;
+        flex-direction: column;
+        //justify-content: start;
+        //justify-content: space-evenly;
+
       }
     }
 

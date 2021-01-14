@@ -46,10 +46,16 @@ export default {
       this.$emit('calculate',this.inputData)
     },
     onInitInvestmentChange(e){
-      this.inputData.initialInvestment = e.data;
+      let res;
+      if(e.data < 0) res = 0;
+      else res = e.data;
+      this.inputData.initialInvestment = res;
     },
     onRiskChange(e){
-      this.inputData.risk = e.data;
+      let res;
+      if(e.data < 0) res = 0;
+      else res = e.data;
+      this.inputData.risk = res;
     }
   },
   beforeMount() {

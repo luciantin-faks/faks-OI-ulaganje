@@ -5,8 +5,8 @@
       <InvestmentInput :propInputData="inputData" @calculate="onCalculate" />
     </div>
     <div class="BotItems">
-      <ItemColumn v-for="(items,index) in ModelData" :items="items" :colID="index" :key="index" @itemChange="onitemChange" @deleteItem="onDeleteItem" @addItem="onAddItem" @copyItem="onItemCopy" @deletCol="onDeleteCol" />
-      <div class="AddCol" @click="onAddCol"><p>Add Col</p></div>
+      <ItemColumn v-for="(items,index) in ModelData" :items="items" :colID="index" :key="index" :colGain="ResultData[index]" @itemChange="onitemChange" @deleteItem="onDeleteItem" @addItem="onAddItem" @copyItem="onItemCopy" @deletCol="onDeleteCol" />
+      <div class="AddCol" @click="onAddCol"><h2>+</h2></div>
     </div>
   </div>
 </template>
@@ -29,18 +29,19 @@ export default {
       },
       ModelData:[
         [
-          {Name:'TestA',ROI:'1',Min:'0',Max:'100',Risk:0},
-          {Name:'TestB',ROI:'2',Min:'0',Max:'100',Risk:0},
+          {Name:'TestA',ROI:'1',Min:'0',Max:'100',Risk:0,invested:0},
+          {Name:'TestB',ROI:'2',Min:'0',Max:'100',Risk:0,invested:0},
         ],
         [
-          {Name:'TestC',ROI:'3',Min:'0',Max:'50',Risk:0},
-          {Name:'TestD',ROI:'4',Min:'0',Max:'50',Risk:0},
+          {Name:'TestC',ROI:'3',Min:'0',Max:'50',Risk:0,invested:0},
+          {Name:'TestD',ROI:'4',Min:'0',Max:'50',Risk:0,invested:0},
         ],
         [
-          {Name:'TestE',ROI:'5',Min:'0',Max:'100',Risk:0},
-          {Name:'TestF',ROI:'6',Min:'0',Max:'100',Risk:0},
+          {Name:'TestE',ROI:'5',Min:'0',Max:'100',Risk:0,invested:0},
+          {Name:'TestF',ROI:'6',Min:'0',Max:'100',Risk:0,invested:0},
         ]
-      ]
+      ],
+      ResultData:[],
     }
   },
   methods:{
@@ -52,7 +53,7 @@ export default {
     },
     onAddItem(e){
       this.ModelData[e].push({
-        Name:'New',ROI:'0',Min:'0',Max:'100',Risk:0
+        Name:'New',ROI:'0',Min:'0',Max:'100',Risk:0,invested:0
       })
     },
     onAddCol(){
@@ -60,6 +61,7 @@ export default {
     },
     onDeleteCol(colId){
       this.ModelData.splice(colId,1);
+      this.ResultData.splice(colId,1);
     },
     onItemCopy(e){
       console.log(this.ModelData)
@@ -81,6 +83,20 @@ export default {
     },
     HandleResult(res){
       console.log(res)
+      let result = JSON.parse(res.data);
+      result.forEach((e,i)=>{
+        let summ = 0;
+
+        e[1].forEach((f,j)=>{
+          summ = summ+f;
+          this.ModelData[i][j].invested = f;
+        })
+        let resD = {
+          gain:e[0]*-1,
+          sum:(e[0]*-1 + summ).toFixed(2),
+        }
+        this.ResultData.splice(i,0,resD)
+      })
     }
   },
   created() {
@@ -116,18 +132,19 @@ export default {
 
     .BotItems{
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
+      //flex-wrap: wrap;
       flex-grow: 8;
       justify-content: left;
     }
 
     .AddCol{
-      width: 10vw;
-      height: 30vh;
+      //width: 10vw;
+      width: 90%;
+      height: 5vh;
       overflow-y: auto;
       align-content: center;
-      margin: 20px;
+      margin: 10px;
       padding: 5px 20px;
       //background-color: dodgerblue;
       align-self: center;
