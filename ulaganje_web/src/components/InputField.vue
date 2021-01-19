@@ -2,8 +2,9 @@
   <div class="InputField">
     <p>{{text.title}} : </p>
     <div class="Data">
-      <p class="DataText" @click="onTextClick" v-if="!showInput">{{text.front}} {{localData}} {{text.back}}</p>
+      <p class="DataText" @click="onTextClick" v-if="!showInput">{{text.front}} {{localData}} </p>
       <input  class="DataInput" ref="input"  :value="localData" v-else @focusout="onFocusOutOfTextInput">
+      <p>{{text.back}}</p>
     </div>
   </div>
 </template>
@@ -58,10 +59,12 @@ name: "InputField",
     .Data{
       padding-left: 5px;
       margin: auto 0;
+      display: flex;
+      flex-direction: row;
     }
     .DataInput{
       margin: auto 0;
-      width: 4em;
+      width: 2em;
     }
     //.DataInput{
     //  text-align: center;

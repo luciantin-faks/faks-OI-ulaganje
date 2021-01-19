@@ -1,0 +1,68 @@
+\documentclass[9pt]{extarticle}
+% \setmainfont{Times New Roman}
+\usepackage{biblatex} \addbibresource{srcs.bib} \DefineBibliographyStrings{english}{% references = {\centering 
+  \Large LITERATURA},
+}
+\usepackage{booktabs} \usepackage{changepage} \usepackage{float} \usepackage{fontspec} \usepackage{multicol} 
+\usepackage[]{geometry} \geometry{ a4paper, total={210mm,297mm}, lmargin=18mm, rmargin=18mm, bmargin=20mm, 
+tmargin=20mm,
+}
+\renewcommand{\figurename}{Tablica} \renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}} \renewcommand{\maketitle}{ \begin{center}
+    % \pagestyle{empty} \phantom{.}
+    \textbf{\Huge Ulaganje}\\ \prored Lucian Tin Udovičić\\ Broj indeksa : 0165073866 \\ Studij : Informatika\\ 
+    Sveučilište Jurja Dobrile u Puli\\
+    
+    \prored \prored
+    
+\end{center}
+}\makeatother
+\newcommand{\prored}{\vspace{12pt}} \newcommand{\indentacija}{\hspace{3,5mm}} \begin{document} 
+\pagenumbering{gobble} \maketitle
+    
+\begin{multicols*}{2}
+% [ \begin{adjustwidth}{100pt}{100pt} \textbf{Cilj rada je postaviti matematički model koji bi pomoću linearnog 
+%     programiranja odredio najbolje opcije za ulaganje. Osim same maksimizacije dobiti, u model je također 
+%     diverzifikacija portoflija i rizik opcije.\\ }
+% \end{adjustwidth} ]
+\textbf{Uz pomoć matematičkog modela, opisanog u ovom radu, može se odrediti optimalni put opcija za ulaganje 
+kroz više perioda uzeći u obzir željenu diverzifikaciju i maksimalni rizik portfelja.\\ } \section{\centering 
+UVOD} \indentacija Ideja je da osoba uloži kapital u skup opcija na određeno vrijeme te nakon toga bi trebala 
+ostvariti dobitak na svoj početni ulog. Sa time bi završio jedan period ulaganja pa može ponovno uložiti u neke 
+opcije u sljedećem periodu \cite{LinearProgrammingandApplication:}. \section{\centering MODEL} \indentacija 
+Svaka opcija se sastoji od ROI vrijednosti (povrat ulaganja), minimalnog i maksimalnog udjela (\(Min\) i 
+\(Max\)) \cite{MathWorks} i vrijednosti rizika te opcije (\( R_i \)) \cite{HowInvestmentRiskIsQuantified}. Cilj 
+modela je maksimizirati dobit, varijable odluke (\(V\)) opisuju uloženu vrijednost u pojedinu opciju. Osim 
+opcija za investiranje mora se unijeti i početni iznos te maksimalni rizik (\( R_{max} \)). \prored \noindent 
+Model se sastoji od funkcije cilja (1) i četiri ograničenja (2,3,4,5), 3. i 4. ograničenje je skup ograničenja 
+za svaki element perioda ulaganja. \prored \noindent
+ Funkcija cilja maksimizira dobiti, dobit je definirana kao umnožak ROI i vrijednosti varijable odluke (1). 
+\begin{equation}
+ Max \ \ \sum_i (ROI_i \times V_i) \end{equation} \prored \noindent Suma varijabli odluka ne smije biti veća od 
+uloga (2). \begin{equation} \sum_i V_i \leq I \end{equation} \prored \noindent Udio varijable odluke mora biti 
+unutar granica (3,4). \begin{equation} \frac{V_j}{\sum_i V_i} \geq Min_j \ ; \ j = 1,2,3,...i \end{equation} 
+\begin{equation} \frac{V_j}{\sum_i V_i} \leq Max_j \ ; \ j = 1,2,3,...i \end{equation} \prored \noindent 
+Ponderirani prosječni rizik portfelja \cite{measureportfolioRisk} mora biti manji ili jednak najvećem dopuštenom 
+riziku (5). Jedinica rizika nije bitna. \begin{equation} \sum_i \frac{V_i}{\sum_j V_j} \times R_i \leq R_{max} 
+\end{equation} Ako želimo izračunati optimalni put ulaganja kroz više perioda onda koristimo sumu dobiti i 
+početnog uloga \(n\)-tog perioda kao početni ulog za period \(n+1\) te se takvim nizanjem dobije optimalni put 
+ulaganja kroz više perioda, (\(n\) bi bio broj perioda u kojem imamo \(i\) opcija ). \section{\centering 
+PRIMJER} \indentacija Želimo ostvariti što veću dobit u sljedeća dva investicijska perioda. U prvom periodu 
+možemo investirati u 1. i 2. opciju dok u drugom periodu možemo investirati u 3. i 4. opciju. Početni iznos je 
+1000 jedinica a maksimalni rizik portfelja je 1. \begin{figure}[H] \centering \begin{tabular}{@{}|l|l|l|l|l|@{}} 
+\toprule Opcije za Investiranje & 1 & 2 & 3 & 4 \\ \midrule ROI (\%) & 6 & 4,6 & 3,2 & 5,4 \\ \midrule Min (\%) 
+& 10 & 0 & 20 & 0 \\ \midrule Max (\%) & 100 & 40 & 90 & 80 \\ \midrule Rizik (Beta) & 1,35 & 0,7 & 0,1 & 1,06 
+\\ \bottomrule \end{tabular} \caption{Opcije za Investiranje} \end{figure} Nakon prvog perioda dobijemo 1052,462 
+jedinica (461,53 u 1. i 538,46 u 2.) te smo to investirali u drugi period sa ukupnim dobitkom od 1104,66 
+jedinica (210,49 u 3. i 841,96 u 4.). U oba perioda je rizik portfelja ostao ispod 1. Analiza osjetljivosti se 
+može provesti tako da povećamo ili smanjimo za 2-5\% ROI vrijednost opcije te ovisno o rezultatu možemo vidjeti 
+koliko je stabilno početno rješenje, dali se zbog malog pomaka koeficijenta puno promijenilo 
+\cite{LinearProgrammingandApplication:}.
+% \section{\centering APLIKACIJA} \indentacija Web aplikacija je napisana u Vue.js-u sa Node \textit{backend-om} 
+% koji pokreće python skriptu koja uz pomoć scipy biblioteke izračuna rješenje.
+\section{\centering ZAKLJUČAK} \indentacija Model u svakom periodu ulaganja odabire najbolje opcije za ulaganje. 
+Umjesto jednog dugačkog perioda ulaganja možemo imati više kraćih perioda kako bi bolje uključili naše želje i 
+mogućnosti u model.
+ Računanje sa rizikom je fleksibilno jer se mogu koristiti različiti pokazatelji.
+% \section*{ LITERATURA}
+\printbibliography \end{multicols*} \end{document}

@@ -1,8 +1,8 @@
 <template>
   <div class="InvestmentInput">
 
-    <InputField :ID="0" :type="`Initial Investment`"  :data="inputData.initialInvestment" @dataChange="onInitInvestmentChange" :text="{title:'Initial Investment',front:'',back:''}" />
-    <InputField :ID="0" :type="`Risk`"  :data="inputData.risk" @dataChange="onRiskChange" :text="{title:'Risk',front:'',back:''}" />
+    <InputField :ID="0" :type="`Initial Investment`"  :data="inputData.initialInvestment" @dataChange="onInitInvestmentChange" :text="{title:'Kapital',front:'',back:''}" />
+    <InputField :ID="0" :type="`Risk`"  :data="inputData.risk" @dataChange="onRiskChange" :text="{title:'Max Rizik',front:'',back:''}" />
 
 <!--    <p>Risk</p>-->
 <!--    <select name="Risk" v-model="inputData.risk">-->

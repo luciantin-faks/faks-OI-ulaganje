@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="TopMenu">
-      <h1>Menu</h1>
+<!--      <h1>Menu</h1>-->
       <InvestmentInput :propInputData="inputData" @calculate="onCalculate" />
     </div>
     <div class="BotItems">
@@ -29,16 +29,16 @@ export default {
       },
       ModelData:[
         [
-          {Name:'TestA',ROI:'1',Min:'0',Max:'100',Risk:0,invested:0},
-          {Name:'TestB',ROI:'2',Min:'0',Max:'100',Risk:0,invested:0},
+          {Name:'Ina',ROI:'1',Min:'0',Max:'100',Risk:0,invested:0},
+          {Name:'Adris',ROI:'2',Min:'0',Max:'100',Risk:0,invested:0},
         ],
         [
-          {Name:'TestC',ROI:'3',Min:'0',Max:'50',Risk:0,invested:0},
-          {Name:'TestD',ROI:'4',Min:'0',Max:'50',Risk:0,invested:0},
+          {Name:'OTP',ROI:'3',Min:'0',Max:'50',Risk:0,invested:0},
+          {Name:'HT',ROI:'4',Min:'0',Max:'50',Risk:0,invested:0},
         ],
         [
-          {Name:'TestE',ROI:'5',Min:'0',Max:'100',Risk:0,invested:0},
-          {Name:'TestF',ROI:'6',Min:'0',Max:'100',Risk:0,invested:0},
+          {Name:'PODR',ROI:'5',Min:'0',Max:'100',Risk:0,invested:0},
+          {Name:'ADPL',ROI:'6',Min:'0',Max:'100',Risk:3,invested:0},
         ]
       ],
       ResultData:[],
@@ -128,6 +128,8 @@ export default {
       background-color: #C1E0F5;
       box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
       border-radius: 5px;
+      margin-bottom: 10px;
+
     }
 
     .BotItems{
@@ -152,6 +154,7 @@ export default {
       background: lightgreen;
       box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
       border-radius: 20px;
+      overflow: hidden;
     }
 
   }

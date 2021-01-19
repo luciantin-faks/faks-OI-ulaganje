@@ -1,0 +1,18 @@
+@article{LinearProgrammingandApplication:, author = "N. K. Oladejo, A. Abolarinwa, S. O. Salawu", title = "Linear Programming and Its Application Techniques in Optimizing Portfolio Selection of a Firm", journal = "Journal of Applied Mathematics", 
+  volume = "2020", eid = "Article ID 8817909", year = "2020", DOI = "https://doi.org/10.1155/2020/8817909", url = "https://www.hindawi.com/journals/jam/2020/8817909/"
+}
+% @book{latexcompanion, author = "Michel Goossens and Frank Mittelbach and Alexander Samarin", title = "The \LaTeX\ Companion", year = "1993", publisher = "Addison-Wesley", address = "Reading, Massachusetts"
+% }
+ 
+% @misc{knuthwebsite, author = "Donald Knuth", title = "Knuth: Computers and Typesetting", url = "http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html"
+% }
+@misc{HowInvestmentRiskIsQuantified, author = "Trevir Nath", title = "How Investment Risk Is Quantified", year = "2020", url = "https://www.investopedia.com/articles/investing/032415/how-investment-risk-quantified.asp"
+}
+@misc{measureportfolioRisk, author = "Richard Bowman", title = "How to measure and manage the risk of your investment portfolio", year = "2019", url = 
+    "https://catanacapital.com/blog/portfolio-risk-measure-manage-investment-portfolio/#measure-risk-investment-portfolio"
+}
+% @misc{measureportfolioRisk, author = "Richard Bowman", title = "How to measure and manage the risk of your investment portfolio", url = 
+%     "https://catanacapital.com/blog/portfolio-risk-measure-manage-investment-portfolio/#measure-risk-investment-portfolio"
+% }
+@misc{MathWorks, author = "MathWorks", title = "Maximize Long-Term Investments Using Linear Programming", url = "https://www.mathworks.com/help/optim/ug/maximize-long-term-investments-using-linear-programming.html"
+}
