@@ -72,13 +72,14 @@ export default {
       this.inputData = Object.assign({},inputData)
 
       let tmpModelData = Array.from(this.ModelData)
-      for(let key in tmpModelData ) console.log(key)
+      // for(let key in tmpModelData ) console.log(key)
 
-      console.log('Sending Data...');
       let data = JSON.stringify({
         ModelData:this.ModelData,
         InputData:this.inputData
       })
+      console.log('Sending Data...', data);
+
       this.connection.send(data)
     },
     HandleResult(res){
